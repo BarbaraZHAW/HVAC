@@ -265,8 +265,8 @@ class MxCcRhTzBl:
         A = np.zeros((14, 14))  # coefficents of unknowns
         b = np.zeros(14)        # vector of inputs
         # MX1
-        A[0, 0], A[0, 8], b[0] = m * c, (m - mo) * c, mo * c * θo
-        A[1, 1], A[1, 9], b[1] = m * l, (m - mo) * l, mo * l * wo
+        A[0, 0], A[0, 8], b[0] = m * c, -(m - mo) * c, mo * c * θo
+        A[1, 1], A[1, 9], b[1] = m * l, -(m - mo) * l, mo * l * wo
         # CC
         A[2, 0], A[2, 2], A[2, 11], b[2] = m * c, - m * c,\
             1, 0
@@ -469,8 +469,8 @@ class MxCcRhTzBl:
         # Processes on psychrometric chart
         wo = psy.w(θo, φo)
         # Points: O, s, S, I
-        θ = np.append(θo, x[0:10:2])
-        w = np.append(wo, x[1:10:2])
+        θ = np.append(θo, x[0:8:2])
+        w = np.append(wo, x[1:8:2])
         # Points       0   1  2  3  4  5       Elements
         A = np.array([[-1, 1, 0, 0, 1],      # MR
                       [0, -1, 1, 0, 0],      # CC
